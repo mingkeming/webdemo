@@ -24,6 +24,7 @@ public class FirstResource {
 
     @RequestMapping(value = "/task"  , method = RequestMethod.POST)
     public Map changeJobSwitch( @RequestParam("taskId") String taskId) {
+        System.out.println(2);
         System.out.println(3);
         Map<String,String> retData = new HashMap<String,String>();
         retData.put("id","1");
