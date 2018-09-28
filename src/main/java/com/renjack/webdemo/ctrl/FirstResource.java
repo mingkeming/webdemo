@@ -13,11 +13,6 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Michael on 2/28/2018.
- *
- * @author Michael
- */
 @RequestMapping("/api")
 @RestController
 public class FirstResource {
@@ -28,7 +23,7 @@ public class FirstResource {
     private FirstService firstService;
 
     @RequestMapping(value = "/task"  , method = RequestMethod.POST)
-    public Map changeJobSwitch(@Valid @RequestParam("taskId") String taskId) {
+    public Map changeJobSwitch( @RequestParam("taskId") String taskId) {
         System.out.println(1);
         Map<String,String> retData = new HashMap<String,String>();
         retData.put("id","1");
