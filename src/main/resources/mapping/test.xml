@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.renjack.webdemo.dao.TestDao" >
+
+    <resultMap id="BaseResultMap" type="com.renjack.webdemo.entity.Test" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+       id,name,status
+    </sql>
+
+    <select id="findByCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        FROM tb_test
+        WHERE 1 = 1
+        <if test="name != null" >
+            AND name LIKE CONCAT('%','${name}','%' )
+        </if>
+        <if test="status != null" >
+            AND status = #{ststus,jdbcType=INT},
+        </if>
+    </select>
+
+    <insert id="batchInsertTest" useGeneratedKeys="true"  keyProperty="id" parameterType="java.util.ArrayList">
+        insert into tb_test (name,status)
+        values
+        <foreach collection="testList" item="item" index="index" separator=",">
+            (
+            #{item.name,jdbcType=VARCHAR},
+            #{item.status,jdbcType=INT}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
