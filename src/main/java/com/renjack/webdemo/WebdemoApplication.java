@@ -11,7 +11,6 @@ import org.springframework.core.env.Environment;
 public class WebdemoApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(WebdemoApplication.class, args);
         SpringApplication app = new SpringApplication(WebdemoApplication.class);
         Environment env = app.run(args).getEnvironment();
         System.out.println(env.getProperty("server.port"));

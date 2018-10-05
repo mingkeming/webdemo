@@ -2,9 +2,6 @@ package com.renjack.webdemo.entity;
 
 import java.io.Serializable;
 
-/**
- * Created by Qukun on 2018/5/7.
- */
 public class TestDTO implements Serializable{
 
 	private Long id;

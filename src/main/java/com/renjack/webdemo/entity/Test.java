@@ -1,8 +1,5 @@
 package com.renjack.webdemo.entity;
 
-/**
- * Created by Qukun on 2018/5/7.
- */
 public class Test {
 
 	private Long id;

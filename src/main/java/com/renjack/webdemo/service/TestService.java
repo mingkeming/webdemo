@@ -1,15 +1,10 @@
 package com.renjack.webdemo.service;
 
-
-
 import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 
 import java.util.List;
 
-/**
- * Created by Qukun on 2018/5/7.
- */
 public interface TestService {
 
 	public void createTest(TestDTO testDTO);

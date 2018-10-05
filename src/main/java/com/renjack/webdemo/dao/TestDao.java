@@ -2,12 +2,10 @@ package com.renjack.webdemo.dao;
 
 import com.renjack.webdemo.entity.Test;
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
-//@Component
 public interface TestDao {
 
 	@Select("SELECT * FROM tb_test WHERE id = #{id}")
