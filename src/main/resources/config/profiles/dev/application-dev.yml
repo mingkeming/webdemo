@@ -3,7 +3,7 @@ server:
 
 
 host:
-  database: localhost:3306/nextdemo_im
+  database: localhost:3306/beauty_ssm
 
 spring:
     profiles:
