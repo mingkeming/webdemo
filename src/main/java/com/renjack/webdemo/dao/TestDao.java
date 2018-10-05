@@ -6,12 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * Created by Qukun on 2018/5/7.
- */
-
 @Mapper
-@Component
+//@Component
 public interface TestDao {
 
 	@Select("SELECT * FROM tb_test WHERE id = #{id}")
@@ -26,7 +22,7 @@ public interface TestDao {
 	@Update("UPDATE tb_test SET name = #{test.name} AND status = #{test.status} WHERE id = #{test.id})")
 	void updateTest(@Param("test") Test test);
 
-	void batchInsertTest(List<Test> testList);
+	void batchInsertT(List<Test> testList);
 
 	List<Test> findByCondition(@Param("name") String name, @Param("status") Integer status);
 

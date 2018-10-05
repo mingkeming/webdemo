@@ -21,18 +21,14 @@
             AND name LIKE CONCAT('%','${name}','%' )
         </if>
         <if test="status != null" >
-            AND status = #{ststus,jdbcType=INT},
+            AND status = #{status,jdbcType=INTEGER}
         </if>
     </select>
 
-    <insert id="batchInsertTest" useGeneratedKeys="true"  keyProperty="id" parameterType="java.util.ArrayList">
-        insert into tb_test (name,status)
-        values
-        <foreach collection="testList" item="item" index="index" separator=",">
-            (
-            #{item.name,jdbcType=VARCHAR},
-            #{item.status,jdbcType=INT}
-            )
+    <insert id="batchInsertT" useGeneratedKeys="true"  keyProperty="id" parameterType="java.util.ArrayList" >
+        insert into tb_test (name,status) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.name}, #{item.status} )
         </foreach>
     </insert>
 

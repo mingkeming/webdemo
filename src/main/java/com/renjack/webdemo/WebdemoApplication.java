@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
 @SpringBootApplication
-@MapperScan("com.renjack.webdemo.entity")
+@MapperScan("com.renjack.webdemo.dao")
 //@EnableSwagger2
 public class WebdemoApplication {
 

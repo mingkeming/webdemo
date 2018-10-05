@@ -1,5 +1,6 @@
 package com.renjack.webdemo.ctrl;
 
+import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 import com.renjack.webdemo.service.FirstService;
 import com.renjack.webdemo.service.TestService;
@@ -33,18 +34,20 @@ public class FirstResource {
 
     @RequestMapping(value = "/task"  , method = RequestMethod.POST)
     public Map changeJobSwitch( @RequestParam("taskId") String taskId) {
-        Map<String,String> retData = new HashMap<String,String>();
+        Map<String,Object> retData = new HashMap<String,Object>();
         TestDTO testDTO = new TestDTO();
         testDTO.setId(1l);
-        testDTO.setName("123");
+        testDTO.setName("中国");
         testDTO.setStatus(2);
         List<TestDTO> a = Lists.newArrayList();
         a.add(testDTO);
         a.add(testDTO);
         a.add(testDTO);
         a.add(testDTO);
-        testService.batchInsertTest(a);
-        retData.put("id","1");
+        testService.findByCondition("111",12);
+        List<Test> b = testService.batchInsertT(a);
+
+        retData.put("id",b);
         firstService.sendEmail(taskId);
         return retData;
     }

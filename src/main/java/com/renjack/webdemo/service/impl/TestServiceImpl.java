@@ -31,16 +31,15 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public void batchInsertTest(List<TestDTO> testDTOs) {
+	public List<Test> batchInsertT(List<TestDTO> testDTOs) {
 		List<Test> testList = Lists.newArrayList();
 		for (TestDTO testDTO : testDTOs){
 			Test test = this.dto2Entity(testDTO);
 			testList.add(test);
 		}
-		testDao.batchInsertTest(testList);
+		testDao.batchInsertT(testList);
+		return testList;
 	}
-
-
 
 	@Override
 	public void deleteTest(Long id) {

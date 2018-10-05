@@ -2,6 +2,7 @@ package com.renjack.webdemo.service;
 
 
 
+import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface TestService {
 
 	public void createTest(TestDTO testDTO);
 
-	public void batchInsertTest(List<TestDTO> testDTOs);
+    public List<Test> batchInsertT(List<TestDTO> testDTOs);
 
 	public void deleteTest(Long id);
 

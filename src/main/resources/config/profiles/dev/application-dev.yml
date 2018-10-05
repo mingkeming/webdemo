@@ -13,7 +13,8 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
       password: 111111
-      url: jdbc:mysql://${host.database}?zeroDateTimeBehavior=convertToNull
+      #插入汉字防止乱码使用unicode编码
+      url: jdbc:mysql://${host.database}?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       # 使用druid数据源
       type: com.alibaba.druid.pool.DruidDataSource
       filters: stat
@@ -29,3 +30,8 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.winter.model
+  check-config-location: true
