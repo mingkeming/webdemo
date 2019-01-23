@@ -26,7 +26,7 @@ public class FirstResource {
     @Autowired
     private FirstService firstService;
 
-    @Autowired
+    @Autowired 
     TestService testService ;
 
     @RequestMapping(value = "/task"  , method = RequestMethod.POST)
