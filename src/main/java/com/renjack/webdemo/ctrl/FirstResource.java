@@ -1,15 +1,17 @@
 package com.renjack.webdemo.ctrl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 import com.renjack.webdemo.service.FirstService;
 import com.renjack.webdemo.service.TestService;
-import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,11 +32,11 @@ public class FirstResource {
         @PostMapping(value = "/insertBatch")
         public Map changeJobSwitch(@RequestBody List<TestDTO> testDTOs) {
             //参数传递数组
-            Map<String,Object> retData = new HashMap<String,Object>();
-            List<TestDTO> lists = testService.findByCondition("111",12);
-            List<Test> b = testService.batchInsert(testDTOs);
-            log.debug("data: ",b);
-            retData.put("id",b);
+            Map<String,Object> retData = new HashMap<>();
+            List<Test> lists = testService.findByCondition("111",12);
+            List<Test> insertedData = testService.batchInsert(testDTOs);
+            log.debug("data:{} ",JSONArray.toJSONString(insertedData));
+            retData.put("retData",insertedData);
             firstService.sendEmail("");
             return retData;
     }

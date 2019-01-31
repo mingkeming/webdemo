@@ -17,7 +17,5 @@ public interface TestService {
 
 	public TestDTO findTest(Long id);
 
-	public List<TestDTO> findByCondition(String name, Integer status);
-
-
+	public List<Test> findByCondition(String name, Integer status);
 }

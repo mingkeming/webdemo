@@ -56,11 +56,9 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public List<TestDTO> findByCondition(String name, Integer status) {
+	public List<Test> findByCondition(String name, Integer status) {
 		List<Test> testList = testDao.findByCondition(name,status);
-		List<TestDTO> testDTOlist = Lists.newArrayList();
-
-		return testDTOlist;
+		return testList;
 	}
 
 	private Test dto2Entity(TestDTO testDTO){
