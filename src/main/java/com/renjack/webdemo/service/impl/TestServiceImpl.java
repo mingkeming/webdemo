@@ -12,9 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by Qukun on 2018/5/7.
- */
 @Service("testService")
 public class TestServiceImpl implements TestService {
 
@@ -30,13 +27,13 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public List<Test> batchInsertT(List<TestDTO> testDTOs) {
+	public List<Test> batchInsert(List<TestDTO> testDTOs) {
 		List<Test> testList = Lists.newArrayList();
 		for (TestDTO testDTO : testDTOs){
 			Test test = this.dto2Entity(testDTO);
 			testList.add(test);
 		}
-		testDao.batchInsertT(testList);
+		testDao.batchInsert(testList);
 		return testList;
 	}
 

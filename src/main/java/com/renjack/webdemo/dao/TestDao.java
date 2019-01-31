@@ -20,7 +20,7 @@ public interface TestDao {
 	@Update("UPDATE tb_test SET name = #{test.name} AND status = #{test.status} WHERE id = #{test.id})")
 	void updateTest(@Param("test") Test test);
 
-	void batchInsertT(List<Test> testList);
+	void batchInsert(List<Test> testList);
 
 	List<Test> findByCondition(@Param("name") String name, @Param("status") Integer status);
 

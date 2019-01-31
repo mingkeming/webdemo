@@ -9,7 +9,7 @@ public interface TestService {
 
 	public void createTest(TestDTO testDTO);
 
-    public List<Test> batchInsertT(List<TestDTO> testDTOs);
+    public List<Test> batchInsert(List<TestDTO> testDTOs);
 
 	public void deleteTest(Long id);
 

@@ -8,17 +8,15 @@ import org.assertj.core.util.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RequestMapping("/api")
-@RestController
+@RestController // 该注解和Controller的主要差别是该注解为Controller+ ResponseBody
 public class FirstResource {
 
     private static final Logger log = LoggerFactory.getLogger(FirstResource.class);
@@ -26,26 +24,18 @@ public class FirstResource {
     @Autowired
     private FirstService firstService;
 
-    @Autowired 
-    TestService testService ;
+        @Autowired
+        TestService testService ;
 
-    @RequestMapping(value = "/task"  , method = RequestMethod.POST)
-    public Map changeJobSwitch( @RequestParam("taskId") String taskId) {
-        Map<String,Object> retData = new HashMap<String,Object>();
-        TestDTO testDTO = new TestDTO();
-        testDTO.setId(1l);
-        testDTO.setName("中国");
-        testDTO.setStatus(2);
-        List<TestDTO> a = Lists.newArrayList();
-        a.add(testDTO);
-        a.add(testDTO);
-        a.add(testDTO);
-        a.add(testDTO);
-        testService.findByCondition("111",12);
-        List<Test> b = testService.batchInsertT(a);
-        log.debug("data: ",b);
-        retData.put("id",b);
-        firstService.sendEmail(taskId);
-        return retData;
+        @PostMapping(value = "/insertBatch")
+        public Map changeJobSwitch(@RequestBody List<TestDTO> testDTOs) {
+            //参数传递数组
+            Map<String,Object> retData = new HashMap<String,Object>();
+            List<TestDTO> lists = testService.findByCondition("111",12);
+            List<Test> b = testService.batchInsert(testDTOs);
+            log.debug("data: ",b);
+            retData.put("id",b);
+            firstService.sendEmail("");
+            return retData;
     }
 }
