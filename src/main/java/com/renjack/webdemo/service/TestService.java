@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface TestService {
 
-	public void createTest(TestDTO testDTO);
+	void createTest(TestDTO testDTO);
 
-    public List<Test> batchInsert(List<TestDTO> testDTOs);
+    List<Test> batchInsert(List<TestDTO> testDTOs);
 
-	public void deleteTest(Long id);
+	void deleteTest(Long id);
 
-	public void updateTest(TestDTO testDTO);
+	void updateTest(TestDTO testDTO);
 
-	public TestDTO findTest(Long id);
+	TestDTO findTest(Long id);
 
-	public List<Test> findByCondition(String name, Integer status);
+	List<Test> findByCondition(String name, Integer status);
 }

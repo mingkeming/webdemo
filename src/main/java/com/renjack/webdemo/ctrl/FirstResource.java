@@ -23,11 +23,9 @@ public class FirstResource {
 
     private static final Logger log = LoggerFactory.getLogger(FirstResource.class);
 
-    @Autowired
-    private FirstService firstService;
 
         @Autowired
-        TestService testService ;
+        private TestService testService ;
 
         @PostMapping(value = "/insertBatch")
         public Map changeJobSwitch(@RequestBody List<TestDTO> testDTOs) {
@@ -37,7 +35,6 @@ public class FirstResource {
             List<Test> insertedData = testService.batchInsert(testDTOs);
             log.debug("data:{} ",JSONArray.toJSONString(insertedData));
             retData.put("retData",insertedData);
-            firstService.sendEmail("");
             return retData;
     }
 }

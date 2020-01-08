@@ -1,7 +1,10 @@
 package com.renjack.webdemo.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class TestDTO implements Serializable{
 
 	private Long id;
@@ -9,28 +12,4 @@ public class TestDTO implements Serializable{
 	private String name;
 
 	private Integer status;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
 }

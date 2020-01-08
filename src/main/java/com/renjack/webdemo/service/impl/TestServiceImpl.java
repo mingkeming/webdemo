@@ -4,20 +4,18 @@ import com.renjack.webdemo.dao.TestDao;
 import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 import com.renjack.webdemo.service.TestService;
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@Slf4j
 @Service("testService")
 public class TestServiceImpl implements TestService {
 
-	private final Logger logger = LoggerFactory.getLogger(TestServiceImpl.class);
-
-	@Autowired
+	@Resource
 	private TestDao testDao;
 
 	@Override
