@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface TestService {
 
+	static String method(){
+		return "";
+	}
+
 	void createTest(TestDTO testDTO);
 
     List<Test> batchInsert(List<TestDTO> testDTOs);
