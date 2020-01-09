@@ -11,6 +11,10 @@ public interface TestService {
 		return "china";
 	}
 
+	static String method(){
+		return "";
+	}
+
 	void createTest(TestDTO testDTO);
 
     List<Test> batchInsert(List<TestDTO> testDTOs);
