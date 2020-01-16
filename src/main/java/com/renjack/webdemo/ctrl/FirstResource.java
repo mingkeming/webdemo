@@ -1,6 +1,7 @@
 package com.renjack.webdemo.ctrl;
 
 import com.alibaba.fastjson.JSONArray;
+import com.renjack.webdemo.config.redis.RedisService;
 import com.renjack.webdemo.entity.Test;
 import com.renjack.webdemo.entity.TestDTO;
 import com.renjack.webdemo.service.FirstService;
@@ -13,28 +14,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RestController
 @RequestMapping("/api")
-@RestController // 该注解和Controller的主要差别是该注解为Controller+ ResponseBody
 public class FirstResource {
 
     private static final Logger log = LoggerFactory.getLogger(FirstResource.class);
 
+    @Autowired
+    RedisService redisService;
 
-        @Autowired
-        private TestService testService ;
+    @Autowired
+    private TestService testService ;
 
-        @PostMapping(value = "/insertBatch")
-        public Map changeJobSwitch(@RequestBody List<TestDTO> testDTOs) {
-            //参数传递数组
-            Map<String,Object> retData = new HashMap<>();
-            List<Test> lists = testService.findByCondition("111",12);
-            List<Test> insertedData = testService.batchInsert(testDTOs);
-            log.debug("data:{} ",JSONArray.toJSONString(insertedData));
-            retData.put("retData",insertedData);
-            return retData;
+    @PostMapping(value = "/insertBatch")
+    public Map changeJobSwitch() {
+        //参数传递数组
+        //String q = redisService.get("applet_access_token1");
+        Map<String,Object> retData = new HashMap<>();
+        List<TestDTO> testDTOs = new ArrayList<>();
+        TestDTO lists = testService.findTest(1L);
+        //List<Test> insertedData = testService.batchInsert(testDTOs);
+        //log.debug("data:{} ",JSONArray.toJSONString(insertedData));
+        //retData.put("retData",insertedData);
+        return retData;
     }
 }
