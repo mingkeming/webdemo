@@ -6,6 +6,8 @@ import com.renjack.webdemo.entity.TestDTO;
 import com.renjack.webdemo.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -55,6 +57,14 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
+	public TestDTO findTestById(Long id) {
+		System.out.println("this is 1--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		Test test = testDao.getTest(id);
+		System.out.println("this is 1--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		return this.entity2DTO(test);
+	}
+
+	@Override
 	public List<Test> findByCondition(String name, Integer status) {
 		List<Test> testList = testDao.findByCondition(name,status);
 		return testList;
@@ -70,9 +80,7 @@ public class TestServiceImpl implements TestService {
 
 	private TestDTO entity2DTO(Test test){
 		TestDTO testDTO = new TestDTO();
-		testDTO.setId(test.getId());
-		testDTO.setName(test.getName());
-		testDTO.setStatus(test.getStatus());
+		BeanUtils.copyProperties(test,testDTO);
 		return testDTO;
 	}
 }

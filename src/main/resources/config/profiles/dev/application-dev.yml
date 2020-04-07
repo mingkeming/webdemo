@@ -18,8 +18,8 @@ spring:
       # 使用druid数据源
       type: com.alibaba.druid.pool.DruidDataSource
       filters: stat
-      maxActive: 20
-      initialSize: 1
+      maxActive: 6
+      initialSize: 4
       maxWait: 60000
       minIdle: 1
       timeBetweenEvictionRunsMillis: 60000
@@ -47,3 +47,5 @@ mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.winter.model
   check-config-location: true
+  configuration:
+    map-underscore-to-camel-case: true

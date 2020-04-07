@@ -27,5 +27,7 @@ public interface TestService {
 	@Cacheable(value = "redisExpire1h", key = "'test_user_'.concat(#p0)")
 	TestDTO findTest(Long id);
 
+	TestDTO findTestById(Long id);
+
 	List<Test> findByCondition(String name, Integer status);
 }

@@ -10,4 +10,6 @@ public class Test {
 	private String name;
 
 	private Integer status;
+
+	private String localName;
 }
