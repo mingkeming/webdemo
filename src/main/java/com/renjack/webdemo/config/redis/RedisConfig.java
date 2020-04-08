@@ -13,7 +13,12 @@ import org.springframework.data.redis.connection.*;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @EnableCaching
@@ -28,11 +33,42 @@ public class RedisConfig extends CachingConfigurerSupport {
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }
 
-    @Bean
+    @Bean//配置缓存的过期时间，
     public CacheManager cacheManager(final LettuceConnectionFactory factory) {
-        final CacheManager cacheManager = RedisCacheManager.create(factory);
-        return cacheManager;
+        return new RedisCacheManager(
+                RedisCacheWriter.nonLockingRedisCacheWriter(factory),
+                this.getRedisCacheConfigurationWithTtl(30*60), // 默认策略，未配置的 key 会使用这个
+                this.getRedisCacheConfigurationMap() // 指定 key 策略
+        );
     }
+
+    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
+        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+        //SsoCache和BasicDataCache进行过期时间配置
+        //每一个单key均需要设置过期时间
+        redisCacheConfigurationMap.put("SsoCache", this.getRedisCacheConfigurationWithTtl(24*60*60));
+        redisCacheConfigurationMap.put("BasicDataCache", this.getRedisCacheConfigurationWithTtl(30*60));
+        redisCacheConfigurationMap.put("redisExpire1h", this.getRedisCacheConfigurationWithTtl(1*60));
+        return redisCacheConfigurationMap;
+    }
+
+    private RedisCacheConfiguration getRedisCacheConfigurationWithTtl(Integer seconds) {
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jackson2JsonRedisSerializer.setObjectMapper(om);
+
+        RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
+        redisCacheConfiguration = redisCacheConfiguration.serializeValuesWith(
+                RedisSerializationContext
+                        .SerializationPair
+                        .fromSerializer(jackson2JsonRedisSerializer)
+        ).entryTtl(Duration.ofSeconds(seconds));
+
+        return redisCacheConfiguration;
+    }
+
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(final LettuceConnectionFactory  factory) {
