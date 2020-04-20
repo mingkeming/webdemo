@@ -16,7 +16,7 @@ spring:
       #插入汉字防止乱码使用unicode编码
       url: jdbc:mysql://${host.database}?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       # 使用druid数据源
-      type: com.alibaba.druid.pool.DruidDataSource
+      # type: com.alibaba.druid.pool.DruidDataSource
       filters: stat
       maxActive: 6
       initialSize: 4

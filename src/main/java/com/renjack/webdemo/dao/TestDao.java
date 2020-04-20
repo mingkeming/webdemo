@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-@Mapper
+@Mapper//本注解作用是再启动类不需要再配置扫描dao包。
 public interface TestDao {
 
 	@Select("SELECT * FROM tb_test WHERE id = #{id}")
