@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<configuration scan="true">
+<configuration scan="true" scanPeriod="60000">
 
     <property name="LOG_HOME" value="/Users/Qukun/Documents/nextLog"/>
     <property name="smtpHost" value="smtp.gmail.com" />
