@@ -1,4 +1,4 @@
-package com.renjack.webdemo.entity;
+package com.renjack.webdemo.entity.sample;
 
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
@@ -11,7 +11,7 @@ public class TestDTO implements Serializable{
 	@Transient
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	private Integer id;
 
 	private String name;
 

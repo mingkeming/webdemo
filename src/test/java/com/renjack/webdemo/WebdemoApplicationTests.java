@@ -19,10 +19,10 @@ public class WebdemoApplicationTests {
 	@Test
 	public void contextLoads() {
 		System.out.println("-------------------------------------------------------------------------------------------------------------------");
-		String a = redisService.get("applet_access_token1");
-		redisService.set("applet_access_token1","1233333",1, TimeUnit.MINUTES);
-		String a1 = redisService.get("applet_access_token1");
-		System.out.println(a);
+//		String a = redisService.get("applet_access_token1");
+//		redisService.set("applet_access_token1","1233333",1, TimeUnit.MINUTES);
+//		String a1 = redisService.get("applet_access_token1");
+//		System.out.println(a);
 		System.out.println("-------------------------------------------------------------------------------------------------------------------");
 	}
 }

@@ -1,6 +1,6 @@
-package com.renjack.webdemo.dao;
+package com.renjack.webdemo.dao.sample;
 
-import com.renjack.webdemo.entity.Test;
+import com.renjack.webdemo.entity.sample.Test;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -23,5 +23,7 @@ public interface TestDao {
 	void batchInsert(List<Test> testList);
 
 	List<Test> findByCondition(@Param("name") String name, @Param("status") Integer status);
+
+	void insert(@Param("test") Test test);
 
 }

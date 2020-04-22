@@ -1,11 +1,13 @@
-package com.renjack.webdemo.entity;
+package com.renjack.webdemo.entity.sample;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class Test {
 
-	private Long id;
+	private Integer id;
 
 	private String name;
 

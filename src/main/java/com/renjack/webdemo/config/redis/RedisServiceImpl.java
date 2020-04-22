@@ -15,13 +15,13 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void set(final String key, final String value, final long expire, final TimeUnit unit) {
-        this.redisTemplate.opsForValue().set(key, (Object)value, expire, unit);
+        this.redisTemplate.opsForValue().set(key, value, expire, unit);
     }
 
     @Override
     public String get(final String key) {
         BoundValueOperations boundValueOperations = this.stringRedisTemplate.boundValueOps(key);
-        return (String )boundValueOperations.get();
+        return (String)boundValueOperations.get();
     }
 
     @Override

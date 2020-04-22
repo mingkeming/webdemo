@@ -1,7 +1,7 @@
-package com.renjack.webdemo.service;
+package com.renjack.webdemo.service.sample;
 
-import com.renjack.webdemo.entity.Test;
-import com.renjack.webdemo.entity.TestDTO;
+import com.renjack.webdemo.entity.sample.Test;
+import com.renjack.webdemo.entity.sample.TestDTO;
 import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
