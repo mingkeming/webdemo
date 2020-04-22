@@ -55,6 +55,11 @@ public class FirstResource {
         return retData;
     }
 
+    /**
+     * 开启定时任务
+     * @return
+     * @throws SchedulerException
+     */
     @PostMapping(value = "/openJob")
     public Map openJob() throws SchedulerException {
         Map<String,Object> retData = new HashMap<>();
@@ -62,6 +67,11 @@ public class FirstResource {
         return retData;
     }
 
+    /**
+     * 调整日志级别
+     * @param logLevel
+     * @return
+     */
     @RequestMapping(value = "logLevel/{logLevel}")
     public String changeLogLevel(@PathVariable("logLevel") String logLevel) {
         try {
