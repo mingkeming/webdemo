@@ -2,7 +2,7 @@ package com.renjack.webdemo.service.sample.impl;
 
 import com.renjack.webdemo.dao.sample.TestDao;
 import com.renjack.webdemo.entity.sample.Test;
-import com.renjack.webdemo.entity.sample.TestDTO;
+import com.renjack.webdemo.dto.sample.TestDTO;
 import com.renjack.webdemo.service.sample.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;

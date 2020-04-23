@@ -3,16 +3,13 @@ package com.renjack.webdemo.ctrl.sample;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import com.renjack.webdemo.config.redis.RedisService;
-import com.renjack.webdemo.entity.sample.TestDTO;
+import com.renjack.webdemo.dto.sample.TestDTO;
 import com.renjack.webdemo.service.sample.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,7 +69,7 @@ public class FirstResource {
      * @param logLevel
      * @return
      */
-    @RequestMapping(value = "logLevel/{logLevel}")
+    @GetMapping(value = "logLevel/{logLevel}")
     public String changeLogLevel(@PathVariable("logLevel") String logLevel) {
         try {
             LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();

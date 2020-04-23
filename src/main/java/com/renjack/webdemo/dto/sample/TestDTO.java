@@ -1,4 +1,4 @@
-package com.renjack.webdemo.entity.sample;
+package com.renjack.webdemo.dto.sample;
 
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
