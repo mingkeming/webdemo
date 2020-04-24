@@ -1,5 +1,8 @@
 package com.renjack.webdemo.tools;
 
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
+
 /**
  * 身份证验证规则： 第十八位数字（校验码）的计算方法为：
  * 1.将前面的身份证号码17位数分别乘以不同的系数。从第一位到第十七位的系数分别为：7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2
@@ -17,6 +20,7 @@ package com.renjack.webdemo.tools;
 public class IdCard {
 
     public static void main(String[] args) {
+
         isIdCard("411081193905235974");
     }
 
