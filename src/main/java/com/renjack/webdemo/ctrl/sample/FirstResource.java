@@ -34,7 +34,7 @@ public class FirstResource {
     private Scheduler scheduler;
 
     @PostMapping(value = "/insertBatch")
-    public Map changeJobSwitch(){
+    public TestDTO changeJobSwitch(){
         //参数传递数组
         //redisService.set("city_baoji1","{\"weather\":\"雨\",\"temperature\":\"7\"}",1000, TimeUnit.SECONDS);
         String q = redisService.get("city_baoji1");
@@ -49,7 +49,7 @@ public class FirstResource {
         log.info("info");
         log.warn("warn");
         log.error("error");
-        return retData;
+        return lists;
     }
 
     /**
@@ -70,7 +70,7 @@ public class FirstResource {
      * @return
      */
     @GetMapping(value = "logLevel/{logLevel}")
-    public String changeLogLevel(@PathVariable("logLevel") String logLevel) {
+    public Object changeLogLevel(@PathVariable("logLevel") String logLevel) {
         try {
             LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
             loggerContext.getLogger("org.mybatis").setLevel(Level.valueOf(logLevel));

@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 public class TestDTO implements Serializable{
 
-	@Transient
+	//@Transient
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
