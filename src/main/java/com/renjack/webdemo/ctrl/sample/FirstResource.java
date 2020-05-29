@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 本类主要存储哥哥写法的基础类
+ * 本类主要存储各个写法的基础类
  */
 @Slf4j
 @RestController
