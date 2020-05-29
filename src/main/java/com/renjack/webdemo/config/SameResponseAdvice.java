@@ -14,9 +14,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 本类作用是将controller返回格式统一。
+ */
 @Component
 @RestControllerAdvice("com.renjack.webdemo.ctrl.sample")
-public class TestResponseAdvice implements ResponseBodyAdvice<Object> {
+public class SameResponseAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
         return true;
