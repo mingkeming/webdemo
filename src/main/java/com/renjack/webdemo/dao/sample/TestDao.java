@@ -26,4 +26,5 @@ public interface TestDao {
 
 	void insert(@Param("test") Test test);
 
+	List<Test> findList();
 }
