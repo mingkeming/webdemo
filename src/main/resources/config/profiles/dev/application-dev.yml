@@ -3,7 +3,7 @@ server:
 
 
 host:
-  database: localhost:3306/beauty_ssm
+  database: 192.168.117.129:3306/shirojwt
 
 spring:
     profiles:
@@ -12,14 +12,14 @@ spring:
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
       username: root
-      password: 111111
+      password: 11111111
       #插入汉字防止乱码使用unicode编码
       url: jdbc:mysql://${host.database}?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
       # 使用druid数据源
-      type: com.alibaba.druid.pool.DruidDataSource
+      # type: com.alibaba.druid.pool.DruidDataSource
       filters: stat
-      maxActive: 20
-      initialSize: 1
+      maxActive: 6
+      initialSize: 4
       maxWait: 60000
       minIdle: 1
       timeBetweenEvictionRunsMillis: 60000
@@ -30,8 +30,22 @@ spring:
       testOnReturn: false
       poolPreparedStatements: true
       maxOpenPreparedStatements: 20
+    redis:
+      host: 192.168.10.23
+      port: 6161
+      password: sxinfoweb
+      lettuce:
+        pool:
+          max-idle: 8
+          max-active: 8
+          max-wait: -1
+          min-idle: 0
+      timeout: 5000
+      database: 9
 
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.winter.model
   check-config-location: true
+  configuration:
+    map-underscore-to-camel-case: true
